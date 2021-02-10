@@ -1118,9 +1118,12 @@ static void add_update_nit_dvbs(struct dvb_table_nit *nit,
 			     dvbs_dvbc_dvbs_freq_inner[d->fec]);
 	dvb_store_entry_prop(new, DTV_ROLLOFF,
 			     dvbs_rolloff[d->roll_off]);
-	if (d->roll_off != 0)
+	if (d->modulation_system != 0)
 		dvb_store_entry_prop(new, DTV_DELIVERY_SYSTEM,
 				     SYS_DVBS2);
+	else
+		dvb_store_entry_prop(new, DTV_DELIVERY_SYSTEM,
+				     SYS_DVBS);
 }
 
 static void add_update_nit_isdbs(struct dvb_table_nit *nit,
